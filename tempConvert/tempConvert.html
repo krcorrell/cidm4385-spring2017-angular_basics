@@ -1,0 +1,64 @@
+<!doctype html>
+<html ng-app = "ngTempConverter">
+	<head>
+		<meta charset = "utf-8">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<!-- <script src = "../angular/angular.min.js"></script> -->
+		
+		<script src = "tempConvert.js"></script>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">  -->
+	</head>
+	<body ng-controller = "convertController">
+		
+		<div class="container">
+		
+			<h1>Please enter the temperature:</h1>
+			
+			<input 	type = "text"
+					maxlength="5"
+					style = "width : 50px"
+					placeholder = "32"
+					name = "tempInput"
+					ng-model = "tempInput" />
+					
+			<br/>
+			
+			<h2>What unit are you converting from?</h2>
+			
+			<input 	type = "radio"
+					ng-model = "cSelected"
+					name = "lengthUnit"
+					value = "Celsius"
+					ng-click = "setCSelected" />
+					
+			Celsius
+			
+			<br />
+			
+			<input 	type = "radio"
+					ng-model = "fSelected"
+					name = "lengthUnit"
+					value = "Fahrenheit"
+					ng-click = "setFSelected" />
+			
+			Fahrenheit
+			
+			<br />
+			
+			<p>Value entered:<b> {{ tempInput }}&deg; {{ unitScale }} </b>=<b> {{ conversionResult }}&deg; {{ convertedUnitScale }}</b></p>
+			
+			<input  type = "button"
+					name = "convert"
+					value = "convert"
+					ng-click = "doConversion()" />
+					
+			<br><br><br>
+			
+			<!--<p>Unit selected:</p>
+			<div ng-show="cSelected">Celsius</div>
+			<div ng-show="fSelected">Fahrenheit</div>-->
+			<small><b><i>&#42;Note: you may have to refresh the page after doing a calculation or two to keep getting the correct result.</b></i></small>
+			
