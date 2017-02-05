@@ -1,0 +1,54 @@
+<html ng-app="billCalc">
+
+<head>
+    <title>Tip and Tax Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/billCalc/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 align="center">Tip and Tax Calculator</h1>
+        <div ng-controller="totalController">
+            <div class="panel panel-primary">
+                <div class="panel-heading" align="center">
+                    <h3 class="panel-title">Enter your bill's subtotal:</h3>
+                </div>
+                <div class="panel-body">
+                    <div align="center">
+                        <input type="number" , ng-model="subtotal" , placeholder="0.00">
+                        <input ng-click="clearSubtotal();" , type="button" , value="clear"></br>
+                        </br>
+                        Tip Percetage: <select ng-model="tipAmount" , ng-options="s.name for s in tipAmounts"></select> State: <select ng-model="state" , ng-options="s.name for s in states"></select></br></br>
+                        <div ng-cloak ng-if="subtotal">
+                            <table>
+                                <tr>
+                                    <td>Subtotal: {{subtotal|currency}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tax: {{ tax()|currency}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tip: {{tip()|currency}}</td>
+                                </tr>
+                                <td class="separator-above">
+                                    <font color="maroon" , size="4">
+                                        <b>Total: {{ total() | currency }}</b>
+                                    </font>
+                                </td>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.angularjs.org/1.6.1/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.1/angular-animate.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/billCalc/billCont.js"></script>
+</body>
+
+</html>
